@@ -7,7 +7,7 @@ public class PercolationStats {
     private double[] p;
     private final double mean;
     private final double stddev;
-    private static final double CONFIDENCE_95 = 1.96;
+    private final double confidence95 = 1.96;
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
@@ -48,12 +48,12 @@ public class PercolationStats {
 
     // low endpoint of 95% confidence interval
     public double confidenceLo() {
-        return mean - CONFIDENCE_95 * Math.sqrt(stddev) / (trails - 1);
+        return mean - confidence95 * Math.sqrt(stddev) / (trails - 1);
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return mean + CONFIDENCE_95 * Math.sqrt(stddev) / (trails - 1);
+        return mean + confidence95 * Math.sqrt(stddev) / (trails - 1);
     }
 
     // test client (see below)
