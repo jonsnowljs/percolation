@@ -36,6 +36,12 @@ public class Percolation {
             open[row-1][col-1] = true;
             openSites++;
 
+            if (row == size) {
+                uf.union(point, endcode(row - 1, col));
+                uf.union(point, endcode(row, col - 1));
+                uf.union(endcode(row, col + 1), point);
+            }
+
             if (row - 1 > 0) {
                 if (isOpen(row - 1, col)) {
                     uf.union(point, endcode(row - 1, col));
